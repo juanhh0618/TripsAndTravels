@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using TripsAndTravels.Common.Enums;
 
-namespace Viajes.Web.Data.Entities
+namespace TripsAndTravels.Web.Data.Entities
 {
     public class TripDetailsEntity
     {
@@ -19,11 +19,11 @@ namespace Viajes.Web.Data.Entities
 
         public string Description { get; set; }
 
-        public string ReceiptPath { get; set; }
+        public string BillPath { get; set; }
 
         public TripEntity Trip { get; set; }
         
-        public ICollection<ExpensesEntity> Costs { get; set; }
+        public ICollection<ExpensesEntity> Expenses { get; set; }
 
     }
 }

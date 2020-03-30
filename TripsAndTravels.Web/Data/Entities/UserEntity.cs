@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 
-namespace Viajes.Web.Data.Entities
+namespace TripsAndTravels.Web.Data.Entities
 {
     public class UserEntity : IdentityUser
     {

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Viajes.Web.Data.Entities;
+using TripsAndTravels.Web.Data.Entities;
 
 namespace TripsAndTravels.Web.Controllers
 {

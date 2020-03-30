@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Viajes.Web.Data.Entities
+namespace TripsAndTravels.Web.Data.Entities
 {
     public class TripEntity
     {

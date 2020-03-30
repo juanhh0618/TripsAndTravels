@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Viajes.Web.Data.Entities;
+using TripsAndTravels.Web.Data.Entities;
 
 namespace TripsAndTravels.Web.Migrations
 {
