@@ -24,7 +24,7 @@ namespace Viajes.Web.Data.Entities
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         public DateTime EndDateTrip { get; set; }
 
-        [StringLength(4, MinimumLength = 4, ErrorMessage = "The {0} field must have {1} characters")]
+        [StringLength(20, MinimumLength = 4, ErrorMessage = "The {0} field must have {1} characters")]
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         public string DestinyCity { get; set; }
 
