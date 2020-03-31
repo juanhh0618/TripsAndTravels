@@ -32,8 +32,8 @@ namespace TripsAndTravels.Web.Controllers
                 return NotFound();
             }
 
-            var tripEntity = await _context.Trips
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var tripEntity = await _context.Trips.FindAsync(id);
+               // .FirstOrDefaultAsync(m => m.Id == id);
             if (tripEntity == null)
             {
                 return NotFound();
@@ -57,9 +57,26 @@ namespace TripsAndTravels.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                tripEntity.IdTrip = tripEntity.IdTrip.ToUpper();
                 _context.Add(tripEntity);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+
+                try
+                {
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (Exception ex)
+                {
+                    if (ex.InnerException.Message.Contains("duplicate"))
+                    {
+                        ModelState.AddModelError(string.Empty, "Already Exists a Trip with that id");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, ex.InnerException.Message);
+                    }
+                    
+                }
             }
             return View(tripEntity);
         }
@@ -85,7 +102,7 @@ namespace TripsAndTravels.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,IdTrip,StartDateTrip,EndDateTrip,DestinyCity")] TripEntity tripEntity)
+        public async Task<IActionResult> Edit(int id, /*[Bind("Id,IdTrip,StartDateTrip,EndDateTrip,DestinyCity")]*/ TripEntity tripEntity)
         {
             if (id != tripEntity.Id)
             {
@@ -94,23 +111,26 @@ namespace TripsAndTravels.Web.Controllers
 
             if (ModelState.IsValid)
             {
+                tripEntity.IdTrip = tripEntity.IdTrip.ToUpper();
+                _context.Update(tripEntity);
+
                 try
-                {
-                    _context.Update(tripEntity);
+                {                  
                     await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
                 }
-                catch (DbUpdateConcurrencyException)
+                catch (Exception ex)
                 {
-                    if (!TripEntityExists(tripEntity.Id))
+                    if (ex.InnerException.Message.Contains("duplicate"))
                     {
-                        return NotFound();
+                        ModelState.AddModelError(string.Empty, "Already Exists a Trip with that id");
                     }
                     else
                     {
-                        throw;
+                        ModelState.AddModelError(string.Empty, ex.InnerException.Message);
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                
             }
             return View(tripEntity);
         }
