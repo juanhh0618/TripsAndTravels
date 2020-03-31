@@ -1,4 +1,4 @@
-﻿@model Viajes.Web.Data.Entities.TripEntity
+﻿@model TripsAndTravels.Web.Data.Entities.TripEntity
 
 @{
     ViewData["Title"] = "Create";
@@ -12,6 +12,11 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdTrip" class="control-label"></label>
+                <input asp-for="IdTrip" class="form-control" />
+                <span asp-validation-for="IdTrip" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="StartDateTrip" class="control-label"></label>
                 <input asp-for="StartDateTrip" class="form-control" />

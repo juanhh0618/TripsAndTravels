@@ -32,6 +32,7 @@ namespace TripsAndTravels.Web.Data
 
             _dataContext.Trips.Add(new TripEntity
             {
+                IdTrip = "MED001" ,
                 StartDateTrip = DateTime.UtcNow,
                 EndDateTrip = DateTime.UtcNow.AddMinutes(30),
                 DestinyCity = "Medellin",
@@ -79,6 +80,7 @@ namespace TripsAndTravels.Web.Data
 
             _dataContext.Trips.Add(new TripEntity
             {
+                IdTrip = "CTG028" ,
                 StartDateTrip = DateTime.UtcNow,
                 EndDateTrip = DateTime.UtcNow.AddMinutes(30),
                 DestinyCity = "Cartagena",

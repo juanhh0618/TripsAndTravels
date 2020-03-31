@@ -19,12 +19,12 @@ namespace TripsAndTravels.Web.Data.Entities
         public DbSet<TripDetailsEntity> TripDetails { get; set; }
         public DbSet<ExpensesEntity> Expenses { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(builder);
+            base.OnModelCreating(modelBuilder);
 
-            builder.Entity<TripEntity>()
-                .HasIndex(t => t.Id)
+            modelBuilder.Entity<TripEntity>()
+                .HasIndex(t => t.IdTrip)
                 .IsUnique();
         }
 

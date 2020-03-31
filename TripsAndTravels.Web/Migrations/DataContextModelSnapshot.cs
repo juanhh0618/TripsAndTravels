@@ -129,13 +129,13 @@ namespace TripsAndTravels.Web.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Viajes.Web.Data.Entities.ExpensesEntity", b =>
+            modelBuilder.Entity("TripsAndTravels.Web.Data.Entities.ExpensesEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("CreatedDate");
+                    b.Property<DateTime>("ExpenseDate");
 
                     b.Property<int>("ExpenseType");
 
@@ -150,17 +150,17 @@ namespace TripsAndTravels.Web.Migrations
                     b.ToTable("Expenses");
                 });
 
-            modelBuilder.Entity("Viajes.Web.Data.Entities.TripDetailsEntity", b =>
+            modelBuilder.Entity("TripsAndTravels.Web.Data.Entities.TripDetailsEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("BillPath");
+
                     b.Property<string>("Description");
 
                     b.Property<string>("Origin");
-
-                    b.Property<string>("ReceiptPath");
 
                     b.Property<int?>("TripId");
 
@@ -173,7 +173,7 @@ namespace TripsAndTravels.Web.Migrations
                     b.ToTable("TripDetails");
                 });
 
-            modelBuilder.Entity("Viajes.Web.Data.Entities.TripEntity", b =>
+            modelBuilder.Entity("TripsAndTravels.Web.Data.Entities.TripEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -185,13 +185,17 @@ namespace TripsAndTravels.Web.Migrations
 
                     b.Property<DateTime>("EndDateTrip");
 
+                    b.Property<string>("IdTrip")
+                        .IsRequired()
+                        .HasMaxLength(6);
+
                     b.Property<DateTime>("StartDateTrip");
 
                     b.Property<string>("UserId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Id")
+                    b.HasIndex("IdTrip")
                         .IsUnique();
 
                     b.HasIndex("UserId");
@@ -199,7 +203,7 @@ namespace TripsAndTravels.Web.Migrations
                     b.ToTable("Trips");
                 });
 
-            modelBuilder.Entity("Viajes.Web.Data.Entities.UserEntity", b =>
+            modelBuilder.Entity("TripsAndTravels.Web.Data.Entities.UserEntity", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -274,7 +278,7 @@ namespace TripsAndTravels.Web.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Viajes.Web.Data.Entities.UserEntity")
+                    b.HasOne("TripsAndTravels.Web.Data.Entities.UserEntity")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -282,7 +286,7 @@ namespace TripsAndTravels.Web.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Viajes.Web.Data.Entities.UserEntity")
+                    b.HasOne("TripsAndTravels.Web.Data.Entities.UserEntity")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -295,7 +299,7 @@ namespace TripsAndTravels.Web.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Viajes.Web.Data.Entities.UserEntity")
+                    b.HasOne("TripsAndTravels.Web.Data.Entities.UserEntity")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -303,29 +307,29 @@ namespace TripsAndTravels.Web.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Viajes.Web.Data.Entities.UserEntity")
+                    b.HasOne("TripsAndTravels.Web.Data.Entities.UserEntity")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Viajes.Web.Data.Entities.ExpensesEntity", b =>
+            modelBuilder.Entity("TripsAndTravels.Web.Data.Entities.ExpensesEntity", b =>
                 {
-                    b.HasOne("Viajes.Web.Data.Entities.TripDetailsEntity", "TripDetail")
-                        .WithMany("Costs")
+                    b.HasOne("TripsAndTravels.Web.Data.Entities.TripDetailsEntity", "TripDetail")
+                        .WithMany("Expenses")
                         .HasForeignKey("TripDetailId");
                 });
 
-            modelBuilder.Entity("Viajes.Web.Data.Entities.TripDetailsEntity", b =>
+            modelBuilder.Entity("TripsAndTravels.Web.Data.Entities.TripDetailsEntity", b =>
                 {
-                    b.HasOne("Viajes.Web.Data.Entities.TripEntity", "Trip")
+                    b.HasOne("TripsAndTravels.Web.Data.Entities.TripEntity", "Trip")
                         .WithMany("TripDetails")
                         .HasForeignKey("TripId");
                 });
 
-            modelBuilder.Entity("Viajes.Web.Data.Entities.TripEntity", b =>
+            modelBuilder.Entity("TripsAndTravels.Web.Data.Entities.TripEntity", b =>
                 {
-                    b.HasOne("Viajes.Web.Data.Entities.UserEntity", "User")
+                    b.HasOne("TripsAndTravels.Web.Data.Entities.UserEntity", "User")
                         .WithMany("Trips")
                         .HasForeignKey("UserId");
                 });

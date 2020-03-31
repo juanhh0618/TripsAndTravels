@@ -53,7 +53,7 @@ namespace TripsAndTravels.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,StartDateTrip,EndDateTrip,DestinyCity")] TripEntity tripEntity)
+        public async Task<IActionResult> Create([Bind("Id,IdTrip,StartDateTrip,EndDateTrip,DestinyCity")] TripEntity tripEntity)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace TripsAndTravels.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,StartDateTrip,EndDateTrip,DestinyCity")] TripEntity tripEntity)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,IdTrip,StartDateTrip,EndDateTrip,DestinyCity")] TripEntity tripEntity)
         {
             if (id != tripEntity.Id)
             {

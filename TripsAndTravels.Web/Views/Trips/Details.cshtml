@@ -1,4 +1,4 @@
-﻿@model Viajes.Web.Data.Entities.TripEntity
+﻿@model TripsAndTravels.Web.Data.Entities.TripEntity
 
 @{
     ViewData["Title"] = "Details";
@@ -10,6 +10,12 @@
     <h4>TripEntity</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdTrip)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IdTrip)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.StartDateTrip)
         </dt>

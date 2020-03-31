@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Viajes.Web.Data.Entities.TripEntity>
+﻿@model IEnumerable<TripsAndTravels.Web.Data.Entities.TripEntity>
 
 @{
     ViewData["Title"] = "Index";
@@ -12,6 +12,9 @@
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdTrip)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.StartDateTrip)
             </th>
@@ -27,6 +30,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTrip)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.StartDateTrip)
             </td>
