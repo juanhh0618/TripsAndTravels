@@ -4,11 +4,9 @@ using System.Text;
 
 namespace TripsAndTravels.Common.Enums
 {
-    public enum ExpenseType
+    public enum UserType
     {
-        Food,
-        Transport,
-        Hotel,
-        Taxes
+        Admin,
+        Employee
     }
 }

@@ -15,7 +15,8 @@ namespace TripsAndTravels.Web.Data.Entities
 
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         [Display(Name = "Trip Type")]
-        public TripType TripType { get; set; }
+        public string TripType { get; set; }
+      //  public TripType TripType { get; set; }
 
         public string Description { get; set; }
 

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-
+using TripsAndTravels.Common.Enums;
 
 namespace TripsAndTravels.Web.Data.Entities
 {
@@ -22,13 +22,17 @@ namespace TripsAndTravels.Web.Data.Entities
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         public string LastName { get; set; }
 
-        [Display(Name = "Bill")]
+        [Display(Name = "Bill Path")]
         public string BillPath { get; set; }
+
+        [Display(Name = "User Type")]
+        public UserType UserType { get; set; }
+
+        public string FullName => $"{FirstName} {LastName}";
 
         public string FullNameWithDocument => $"{FirstName} {LastName} - {Document}";
 
         public ICollection<TripEntity> Trips { get; set; }
-
-
     }
 }
+

@@ -1,12 +1,15 @@
-﻿namespace TripsAndTravels.Common.Enums
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace TripsAndTravels.Common.Enums
 {
     public enum TripType
     {
-        Bussiness,
-        Vacations,
         Work,
+        Vacations,
         Visa,
-        HomeCenter,
-        Domestic_Problem
+        Bussiness
+
     }
 }

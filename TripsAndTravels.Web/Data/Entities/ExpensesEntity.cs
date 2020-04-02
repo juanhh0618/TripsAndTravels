@@ -13,13 +13,14 @@ namespace TripsAndTravels.Web.Data.Entities
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         public float Value { get; set; }
 
-        public ExpenseType ExpenseType { get; set; }
+        public string ExpenseType { get; set; }
+        //public ExpenseType ExpenseType { get; set; }
 
         [DataType(DataType.DateTime)]
         [Display(Name = "Expense Date")]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm}", ApplyFormatInEditMode = false)]
         public DateTime ExpenseDate { get; set; }
-        public TripDetailsEntity TripDetail { get; set; }
+        public TripDetailsEntity TripDetails { get; set; }
 
 
     }
