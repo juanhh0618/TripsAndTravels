@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using TripsAndTravels.Web.Data.Entities;
 
 namespace TripsAndTravels.Web.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class TripsController : Controller
     {
         private readonly DataContext _context;
@@ -32,8 +31,8 @@ namespace TripsAndTravels.Web.Controllers
                 return NotFound();
             }
 
-            var tripEntity = await _context.Trips.FindAsync(id);
-               // .FirstOrDefaultAsync(m => m.Id == id);
+            TripEntity tripEntity = await _context.Trips
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (tripEntity == null)
             {
                 return NotFound();
@@ -41,42 +40,22 @@ namespace TripsAndTravels.Web.Controllers
 
             return View(tripEntity);
         }
-
-        // GET: Trips/Create
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Trips/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,IdTrip,StartDateTrip,EndDateTrip,DestinyCity")] TripEntity tripEntity)
+        public async Task<IActionResult> Create(TripEntity tripEntity)
         {
             if (ModelState.IsValid)
             {
-                tripEntity.IdTrip = tripEntity.IdTrip.ToUpper();
+                ;
                 _context.Add(tripEntity);
-
-                try
-                {
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
-                }
-                catch (Exception ex)
-                {
-                    if (ex.InnerException.Message.Contains("duplicate"))
-                    {
-                        ModelState.AddModelError(string.Empty, "Already Exists a Trip with that id");
-                    }
-                    else
-                    {
-                        ModelState.AddModelError(string.Empty, ex.InnerException.Message);
-                    }
-                    
-                }
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
             return View(tripEntity);
         }
@@ -89,7 +68,7 @@ namespace TripsAndTravels.Web.Controllers
                 return NotFound();
             }
 
-            var tripEntity = await _context.Trips.FindAsync(id);
+            TripEntity tripEntity = await _context.Trips.FindAsync(id);
             if (tripEntity == null)
             {
                 return NotFound();
@@ -97,12 +76,10 @@ namespace TripsAndTravels.Web.Controllers
             return View(tripEntity);
         }
 
-        // POST: Trips/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, /*[Bind("Id,IdTrip,StartDateTrip,EndDateTrip,DestinyCity")]*/ TripEntity tripEntity)
+        public async Task<IActionResult> Edit(int id, TripEntity tripEntity)
         {
             if (id != tripEntity.Id)
             {
@@ -111,26 +88,10 @@ namespace TripsAndTravels.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                tripEntity.IdTrip = tripEntity.IdTrip.ToUpper();
-                _context.Update(tripEntity);
 
-                try
-                {                  
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
-                }
-                catch (Exception ex)
-                {
-                    if (ex.InnerException.Message.Contains("duplicate"))
-                    {
-                        ModelState.AddModelError(string.Empty, "Already Exists a Trip with that id");
-                    }
-                    else
-                    {
-                        ModelState.AddModelError(string.Empty, ex.InnerException.Message);
-                    }
-                }
-                
+                _context.Update(tripEntity);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
             return View(tripEntity);
         }
@@ -143,26 +104,19 @@ namespace TripsAndTravels.Web.Controllers
                 return NotFound();
             }
 
-            var tripEntity = await _context.Trips
+            TripEntity tripEntity = await _context.Trips
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (tripEntity == null)
             {
                 return NotFound();
             }
 
-            return View(tripEntity);
-        }
-
-        // POST: Trips/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var tripEntity = await _context.Trips.FindAsync(id);
             _context.Trips.Remove(tripEntity);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
+        // POST: Trips/Delete/5
 
         private bool TripEntityExists(int id)
         {

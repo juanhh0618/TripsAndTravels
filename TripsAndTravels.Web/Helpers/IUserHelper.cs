@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 using TripsAndTravels.Web.Data.Entities;
+using TripsAndTravels.Web.Models;
 
 namespace TripsAndTravels.Web.Helpers
 {
@@ -15,5 +16,10 @@ namespace TripsAndTravels.Web.Helpers
         Task AddUserToRoleAsync(UserEntity user, string roleName);
 
         Task<bool> IsUserInRoleAsync(UserEntity user, string roleName);
+
+        Task<SignInResult> LoginAsync(LoginViewModel model);
+
+        Task LogoutAsync();
+
     }
 }
