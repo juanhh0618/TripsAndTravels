@@ -55,7 +55,8 @@ namespace TripsAndTravels.Web
             }).AddEntityFrameworkStores<DataContext>();
 
 
-            services.AddScoped<IUserHelper, UserHelper>();         
+            services.AddScoped<IUserHelper, UserHelper>();
+            services.AddScoped<IConverterHelper, ConverterHelper>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

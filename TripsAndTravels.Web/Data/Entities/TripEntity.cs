@@ -26,13 +26,14 @@ namespace TripsAndTravels.Web.Data.Entities
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         public DateTime StartDateTrip { get; set; }
 
+        public DateTime StartDateLocal => StartDateLocal.ToLocalTime();
 
         [DataType(DataType.Date)]
         [Display(Name = "Trip End Date")]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = false)]
         [Required(ErrorMessage = "The field {0} is mandatory.")]
-        public DateTime EndDateTrip { get; set; }
-
+        public DateTime? EndDateTrip { get; set; }
+        public DateTime? EndDateLocal => EndDateTrip?.ToLocalTime();
         [StringLength(20, MinimumLength = 4, ErrorMessage = "The {0} field must have {1} characters")]
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         public string DestinyCity { get; set; }

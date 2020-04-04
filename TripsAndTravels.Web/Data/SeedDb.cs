@@ -102,28 +102,28 @@ namespace TripsAndTravels.Web.Data
                             {
                                 Value = 150000 ,
                                 ExpenseType = "Transport" ,
-                                ExpenseDate = DateTime.UtcNow.AddMinutes(90)
+                                
                             },
 
                             new ExpensesEntity
                             {
                                 Value = 200000 ,
                                 ExpenseType = "Food" ,
-                                ExpenseDate = DateTime.UtcNow.AddMinutes(90)
+                                
                             },
 
                             new ExpensesEntity
                             {
                                 Value = 300000 ,
                                 ExpenseType = "Hotel" ,
-                                ExpenseDate = DateTime.UtcNow.AddMinutes(90)
+                                
                             },
 
                             new ExpensesEntity
                             {
                                 Value = 25000 ,
                                 ExpenseType = "Taxes" ,
-                                ExpenseDate = DateTime.UtcNow.AddMinutes(90)
+                                
                             }
                         }
                     }
@@ -151,28 +151,28 @@ namespace TripsAndTravels.Web.Data
                             {
                                 Value = 350000 ,
                                 ExpenseType = "Transport" ,
-                                ExpenseDate = DateTime.UtcNow.AddMinutes(90)
+                                
                             },
 
                             new ExpensesEntity
                             {
                                 Value = 400000 ,
                                 ExpenseType = "Food" ,
-                                ExpenseDate = DateTime.UtcNow.AddMinutes(90)
+                                
                             },
 
                             new ExpensesEntity
                             {
                                 Value = 500000 ,
                                 ExpenseType = "Hotel" ,
-                                ExpenseDate = DateTime.UtcNow.AddMinutes(90)
+                                
                             },
 
                             new ExpensesEntity
                             {
                                 Value = 75000 ,
                                 ExpenseType = "Taxes" ,
-                                ExpenseDate = DateTime.UtcNow.AddMinutes(90)
+                                
                             }
                         }
                     }
@@ -199,28 +199,28 @@ namespace TripsAndTravels.Web.Data
                             {
                                 Value = 350000 ,
                                 ExpenseType = "Transport" ,
-                                ExpenseDate = DateTime.UtcNow.AddMinutes(90)
+                                
                             },
 
                             new ExpensesEntity
                             {
                                 Value = 400000 ,
                                 ExpenseType = "Food" ,
-                                ExpenseDate = DateTime.UtcNow.AddMinutes(90)
+                                
                             },
 
                             new ExpensesEntity
                             {
                                 Value = 500000 ,
                                 ExpenseType = "Hotel" ,
-                                ExpenseDate = DateTime.UtcNow.AddMinutes(90)
+                                
                             },
 
                             new ExpensesEntity
                             {
                                 Value = 500000 ,
                                 ExpenseType = "Taxes" ,
-                                ExpenseDate = DateTime.UtcNow.AddMinutes(90)
+                                
                             }
                         }
                     }

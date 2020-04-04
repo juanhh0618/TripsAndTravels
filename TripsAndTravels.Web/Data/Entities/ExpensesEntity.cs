@@ -14,12 +14,7 @@ namespace TripsAndTravels.Web.Data.Entities
         public float Value { get; set; }
 
         public string ExpenseType { get; set; }
-        //public ExpenseType ExpenseType { get; set; }
-
-        [DataType(DataType.DateTime)]
-        [Display(Name = "Expense Date")]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm}", ApplyFormatInEditMode = false)]
-        public DateTime ExpenseDate { get; set; }
+        
         public TripDetailsEntity TripDetails { get; set; }
 
 

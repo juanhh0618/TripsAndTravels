@@ -22,8 +22,8 @@ namespace TripsAndTravels.Web.Data.Entities
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         public string LastName { get; set; }
 
-        [Display(Name = "Bill Path")]
-        public string BillPath { get; set; }
+        [Display(Name = "Picture Path")]
+        public string PicturePath { get; set; }
 
         [Display(Name = "User Type")]
         public UserType UserType { get; set; }
