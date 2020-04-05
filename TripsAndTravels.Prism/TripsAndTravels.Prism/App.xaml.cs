@@ -23,13 +23,19 @@ namespace TripsAndTravels.Prism
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/MainPage");
+            await NavigationService.NavigateAsync("/TripsAndTravelsMasterDetailPage/NavigationPage/HomePage");
+
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
-            containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigation<HomePage, HomePageViewModel>();
+            containerRegistry.RegisterForNavigation<TripsAndTravelsMasterDetailPage, TripsAndTravelsMasterDetailPageViewModel>();
+            containerRegistry.RegisterForNavigation<NewTripPage, NewTripPageViewModel>();
+            containerRegistry.RegisterForNavigation<TripDetailsPage, TripDetailsPageViewModel>();
+            containerRegistry.RegisterForNavigation<ModifyUserPage, ModifyUserPageViewModel>();
+            containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
         }
     }
 }

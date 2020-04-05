@@ -18,6 +18,8 @@ namespace TripsAndTravels.Prism.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App(new AndroidInitializer()));
+            //global::Xamarin.Forms.Forms.Init(this, bundle);
+
         }
     }
 
