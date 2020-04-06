@@ -4,8 +4,10 @@
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="TripsAndTravels.Prism.Views.HomePage"
-             BackgroundColor="Aqua"
+             BackgroundColor="{StaticResource ColorBackgroud}"
              Title="{Binding Title}">
+
+    
     <Image Source ="viajeimagen"
        Aspect="Fill"
        HeightRequest="{OnPlatform iOS=300, Android=250}"
