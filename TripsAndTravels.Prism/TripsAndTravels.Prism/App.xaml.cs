@@ -1,5 +1,6 @@
 ﻿using Prism;
 using Prism.Ioc;
+using TripsAndTravels.Common.Services;
 using TripsAndTravels.Prism.ViewModels;
 using TripsAndTravels.Prism.Views;
 using Xamarin.Forms;
@@ -30,6 +31,7 @@ namespace TripsAndTravels.Prism
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
+            containerRegistry.Register<IApiService, ApiService>();
             containerRegistry.RegisterForNavigation<HomePage, HomePageViewModel>();
             containerRegistry.RegisterForNavigation<TripsAndTravelsMasterDetailPage, TripsAndTravelsMasterDetailPageViewModel>();
             containerRegistry.RegisterForNavigation<NewTripPage, NewTripPageViewModel>();

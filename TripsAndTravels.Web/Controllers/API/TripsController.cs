@@ -43,9 +43,9 @@ namespace TripsAndTravels.Web.Controllers.API
 
             if (tripEntity == null)
             {
-                _context.Trips.Add(new TripEntity { IdTrip = idtrip });
+                _context.Trips.Add(tripEntity);
                 await _context.SaveChangesAsync();
-                tripEntity = await _context.Trips.FirstOrDefaultAsync(t => t.IdTrip == idtrip);
+                return Ok(_converterHelper.ToTripResponse(tripEntity));
             }
 
             return Ok(_converterHelper.ToTripResponse(tripEntity));

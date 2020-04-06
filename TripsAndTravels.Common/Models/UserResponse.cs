@@ -23,5 +23,7 @@ namespace TripsAndTravels.Common.Models
         public string FullName => $"{FirstName} {LastName}";
 
         public string FullNameWithDocument => $"{FirstName} {LastName} - {Document}";
+
+        
     }
 }
