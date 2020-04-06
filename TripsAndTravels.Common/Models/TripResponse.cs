@@ -22,7 +22,7 @@ namespace TripsAndTravels.Common.Models
         public List<TripDetailsResponse> TripDetails { get; set; }
         public UserResponse User { get; set; }
 
-        //public int? NumberOfTrips => TripDetails?.Count;
+        
 
 
     }

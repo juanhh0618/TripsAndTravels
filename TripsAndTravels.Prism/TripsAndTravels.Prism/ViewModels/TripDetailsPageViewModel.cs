@@ -10,6 +10,7 @@ namespace TripsAndTravels.Prism.ViewModels
     {
         private readonly IApiService _apiService;
         private TripResponse _trip;
+        private bool _isRunning;
         private DelegateCommand _checkIdTripCommand;
 
         public TripDetailsPageViewModel(
@@ -19,6 +20,13 @@ namespace TripsAndTravels.Prism.ViewModels
             _apiService = apiService;
             Title = "Trip Details";
         }
+
+        public bool IsRunning
+        {
+            get => _isRunning;
+            set => SetProperty(ref _isRunning, value);
+        }
+
 
         public TripResponse Trip
         {
@@ -51,8 +59,11 @@ namespace TripsAndTravels.Prism.ViewModels
                 return;
             }
 
+            IsRunning = true;
             string url = App.Current.Resources["UrlAPI"].ToString();
             Response response = await _apiService.GetTripAsync(IdTrip, url, "api", "/Trips");
+            IsRunning = false;
+
             if (!response.IsSuccess)
             {
                 await App.Current.MainPage.DisplayAlert(

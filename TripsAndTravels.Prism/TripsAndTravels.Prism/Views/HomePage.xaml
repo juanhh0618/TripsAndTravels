@@ -6,5 +6,9 @@
              x:Class="TripsAndTravels.Prism.Views.HomePage"
              BackgroundColor="Aqua"
              Title="{Binding Title}">
-
+    <Image Source ="viajeimagen"
+       Aspect="Fill"
+       HeightRequest="{OnPlatform iOS=300, Android=250}"
+       WidthRequest="{OnPlatform iOS=300, Android=250}"
+       HorizontalOptions="Center" />
 </ContentPage>

@@ -1,5 +1,6 @@
 ﻿using Prism;
 using Prism.Ioc;
+using Syncfusion.Licensing;
 using TripsAndTravels.Common.Services;
 using TripsAndTravels.Prism.ViewModels;
 using TripsAndTravels.Prism.Views;
@@ -22,6 +23,7 @@ namespace TripsAndTravels.Prism
 
         protected override async void OnInitialized()
         {
+            SyncfusionLicenseProvider.RegisterLicense("MjM0ODM1QDMxMzgyZTMxMmUzMGJaZFFCamlPZisxSmk4Z3UwNkh4bC9wTFlrQWFGTlh4WU1IYXdSUTNUTlk9");
             InitializeComponent();
 
             await NavigationService.NavigateAsync("/TripsAndTravelsMasterDetailPage/NavigationPage/HomePage");

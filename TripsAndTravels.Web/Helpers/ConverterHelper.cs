@@ -26,6 +26,7 @@ namespace TripsAndTravels.Web.Helpers
                     Origin = t.Origin,
                     Description = t.Description,
                     BillPath = t.BillPath,
+                    
 
                     Expenses = t.Expenses?.Select(ex => new ExpensesResponse
                     {

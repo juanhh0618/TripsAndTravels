@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 using TripsAndTravels.Common.Enums;
 
 namespace TripsAndTravels.Web.Data.Entities
@@ -26,5 +27,6 @@ namespace TripsAndTravels.Web.Data.Entities
         
         public ICollection<ExpensesEntity> Expenses { get; set; }
 
+        public float? TotalExpenses => Expenses?.Sum(e => e.Value);
     }
 }
