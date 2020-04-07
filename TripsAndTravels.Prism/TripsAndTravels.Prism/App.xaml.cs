@@ -40,6 +40,7 @@ namespace TripsAndTravels.Prism
             containerRegistry.RegisterForNavigation<TripDetailsPage, TripDetailsPageViewModel>();
             containerRegistry.RegisterForNavigation<ModifyUserPage, ModifyUserPageViewModel>();
             containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
+
         }
     }
 }
