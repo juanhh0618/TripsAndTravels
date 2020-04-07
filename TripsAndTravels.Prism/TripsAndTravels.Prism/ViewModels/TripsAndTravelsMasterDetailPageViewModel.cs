@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using TripsAndTravels.Prism.Helpers;
 using TripsAndTravels.Common.Models;
 
 namespace TripsAndTravels.Prism.ViewModels
@@ -26,31 +27,31 @@ namespace TripsAndTravels.Prism.ViewModels
                 {
                     Icon = "ic_home",
                     PageName = "HomePage",
-                    Title = "Home"
+                    Title = Languages.Home
                 },
                 new Menu
                 {
                     Icon = "ic_control_point",
                     PageName = "NewTripPage",
-                    Title = "Add new trip"
+                    Title = Languages.AddNewTrip
                 },
                 new Menu
                 {
                     Icon = "ic_details",
                     PageName = "TripDetailsPage",
-                    Title = "See trip details"
+                    Title = Languages.SeeTripDetails
                 },
                 new Menu
                 {
                     Icon = "ic_account_circle",
                     PageName = "ModifyUserPage",
-                    Title = "Modify User"
+                    Title = Languages.ModifyUser
                 },
                 new Menu
                 {
                     Icon = "ic_exit_to_app",
                     PageName = "LoginPage",
-                    Title = "Log in"
+                    Title = Languages.LogIn
                 }
             };
 

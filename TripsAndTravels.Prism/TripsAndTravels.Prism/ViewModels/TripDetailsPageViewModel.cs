@@ -3,6 +3,7 @@ using Prism.Navigation;
 using System.Text.RegularExpressions;
 using TripsAndTravels.Common.Models;
 using TripsAndTravels.Common.Services;
+using TripsAndTravels.Prism.Helpers;
 
 namespace TripsAndTravels.Prism.ViewModels
 {
@@ -18,7 +19,7 @@ namespace TripsAndTravels.Prism.ViewModels
             IApiService apiService) : base(navigationService)
         {
             _apiService = apiService;
-            Title = "Trip Details";
+            Title = Languages.TripDetails;
         }
 
         public bool IsRunning
@@ -43,9 +44,10 @@ namespace TripsAndTravels.Prism.ViewModels
             if (string.IsNullOrEmpty(IdTrip))
             {
                 await App.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "You must enter an Id Trip.",
-                    "Accept");
+                    Languages.Error,
+                    Languages.IdTripError1,
+                    Languages.Accept);
+
                 return;
             }
 
@@ -53,9 +55,10 @@ namespace TripsAndTravels.Prism.ViewModels
             if (!regex.IsMatch(IdTrip))
             {
                 await App.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "The Id Trip must start with three letters indicating the city and end with three numbers indicating the number of trip.",
-                    "Accept");
+                    Languages.Error,
+                    Languages.IdTripError2,
+                    Languages.Accept);
+
                 return;
             }
 
@@ -65,7 +68,10 @@ namespace TripsAndTravels.Prism.ViewModels
             if (!connection)
             {
                 IsRunning = false;
-                await App.Current.MainPage.DisplayAlert("Error", "Check the internet connection.", "Accept");
+                await App.Current.MainPage.DisplayAlert(Languages.Error,
+                    Languages.ConnectionError,
+                    Languages.Accept
+);
                 return;
             }
 
@@ -76,10 +82,9 @@ namespace TripsAndTravels.Prism.ViewModels
             if (!response.IsSuccess)
             {
                 await App.Current.MainPage.DisplayAlert(
-                    "Error",
+                    Languages.Error,
                     "The trip doesn't exist",
-                    //response.Message,
-                    "Accept");
+                    Languages.Accept );
                 return;
             }
 
