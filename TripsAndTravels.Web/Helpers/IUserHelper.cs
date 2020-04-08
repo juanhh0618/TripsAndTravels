@@ -20,8 +20,12 @@ namespace TripsAndTravels.Web.Helpers
         Task<SignInResult> LoginAsync(LoginViewModel model);
 
         Task LogoutAsync();
+
         Task<UserEntity> AddUserAsync(AddUserViewModel model, string path);
 
+        Task<IdentityResult> ChangePasswordAsync(UserEntity user, string oldPassword, string newPassword);
+
+        Task<IdentityResult> UpdateUserAsync(UserEntity user);
 
     }
 }
