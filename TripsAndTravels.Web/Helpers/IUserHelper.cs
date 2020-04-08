@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Threading.Tasks;
 using TripsAndTravels.Web.Data.Entities;
 using TripsAndTravels.Web.Models;
@@ -8,6 +9,7 @@ namespace TripsAndTravels.Web.Helpers
     public interface IUserHelper
     {
         Task<UserEntity> GetUserByEmailAsync(string email);
+        Task<UserEntity> GetUserByEmailAsync(Guid userId);
 
         Task<IdentityResult> AddUserAsync(UserEntity user, string password);
 
@@ -26,6 +28,13 @@ namespace TripsAndTravels.Web.Helpers
         Task<IdentityResult> ChangePasswordAsync(UserEntity user, string oldPassword, string newPassword);
 
         Task<IdentityResult> UpdateUserAsync(UserEntity user);
+
+        Task<SignInResult> ValidatePasswordAsync(UserEntity user, string password);
+
+        Task<string> GenerateEmailConfirmationTokenAsync(UserEntity user);
+
+        Task<IdentityResult> ConfirmEmailAsync(UserEntity user, string token);
+
 
     }
 }
