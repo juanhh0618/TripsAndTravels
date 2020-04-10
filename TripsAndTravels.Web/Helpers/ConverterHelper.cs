@@ -44,7 +44,7 @@ namespace TripsAndTravels.Web.Helpers
             };
         }
 
-        private UserResponse ToUserResponse(UserEntity user)
+        public UserResponse ToUserResponse(UserEntity user)
         {
             if (user == null)
             {
@@ -59,10 +59,11 @@ namespace TripsAndTravels.Web.Helpers
                 FirstName = user.FirstName,
                 Id = user.Id,
                 LastName = user.LastName,
-                PhoneNumber = user.PhoneNumber,
                 PicturePath = user.PicturePath,
                 UserType = user.UserType
             };
         }
+
+        
     }
 }

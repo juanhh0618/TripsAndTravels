@@ -12,6 +12,7 @@ namespace TripsAndTravels.Web.Helpers
 
         TripResponse ToTripResponse(TripEntity tripEntity);
 
+        UserResponse ToUserResponse(UserEntity user);
 
     }
 }
