@@ -3,6 +3,7 @@ using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TripsAndTravels.Common.Helpers;
 using TripsAndTravels.Common.Models;
 
 namespace TripsAndTravels.Prism.ViewModels
@@ -21,6 +22,13 @@ namespace TripsAndTravels.Prism.ViewModels
 
         private async void SelectMenuAsync()
         {
+            if (PageName == "LoginPage" && Settings.IsLogin)
+            {
+                Settings.IsLogin = false;
+                Settings.User = null;
+                Settings.Token = null;
+            }
+
             await _navigationService.NavigateAsync($"/TripsAndTravelsMasterDetailPage/NavigationPage/{PageName}");
         }
     }

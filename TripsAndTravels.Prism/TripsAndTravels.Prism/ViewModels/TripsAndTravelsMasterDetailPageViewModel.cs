@@ -4,18 +4,38 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using TripsAndTravels.Prism.Helpers;
 using TripsAndTravels.Common.Models;
+using TripsAndTravels.Common.Helpers;
+using Newtonsoft.Json;
 
 namespace TripsAndTravels.Prism.ViewModels
 {
     public class TripsAndTravelsMasterDetailPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
+        private UserResponse _user;
+
 
         public TripsAndTravelsMasterDetailPageViewModel(INavigationService navigationService) : base(navigationService)
         {
             _navigationService = navigationService;
+            LoadUser();
             LoadMenus();
         }
+
+        public UserResponse User
+        {
+            get => _user;
+            set => SetProperty(ref _user, value);
+        }
+
+        private void LoadUser()
+        {
+            if (Settings.IsLogin)
+            {
+                User = JsonConvert.DeserializeObject<UserResponse>(Settings.User);
+            }
+        }
+
 
         public ObservableCollection<MenuItemViewModel> Menus { get; set; }
 
@@ -51,7 +71,7 @@ namespace TripsAndTravels.Prism.ViewModels
                 {
                     Icon = "ic_exit_to_app",
                     PageName = "LoginPage",
-                    Title = Languages.LogIn
+                    Title = Settings.IsLogin ? Languages.Logout : Languages.Login
                 }
             };
 
