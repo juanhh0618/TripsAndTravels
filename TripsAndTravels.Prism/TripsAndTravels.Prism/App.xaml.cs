@@ -34,6 +34,8 @@ namespace TripsAndTravels.Prism
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
+            containerRegistry.Register<IFilesHelper, FilesHelper>();
+            containerRegistry.Register<IFilesHelper, FilesHelper>();
             containerRegistry.Register<IRegexHelper, RegexHelper>();
             containerRegistry.Register<IApiService, ApiService>();
             containerRegistry.RegisterForNavigation<HomePage, HomePageViewModel>();
@@ -44,6 +46,7 @@ namespace TripsAndTravels.Prism
             containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
 
             containerRegistry.RegisterForNavigation<RegisterPage, RegisterPageViewModel>();
+            containerRegistry.RegisterForNavigation<RememberPasswordPage, RememberPasswordPageViewModel>();
         }
     }
 }

@@ -267,4 +267,22 @@
   <data name="Ok" xml:space="preserve">
     <value>Aceptar</value>
   </data>
+  <data name="PictureSource" xml:space="preserve">
+    <value>Fuente de la imagen</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="FromCamera" xml:space="preserve">
+    <value>Desde la cámara</value>
+  </data>
+  <data name="FromGallery" xml:space="preserve">
+    <value>De la galería</value>
+  </data>
+  <data name="PasswordRecover" xml:space="preserve">
+    <value>Recupere su contraseña</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>¿Ha olvidado la contraseña?</value>
+  </data>
 </root>

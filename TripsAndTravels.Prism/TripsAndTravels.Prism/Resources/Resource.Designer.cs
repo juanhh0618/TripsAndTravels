@@ -79,6 +79,15 @@ namespace TripsAndTravels.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Check Id.
         /// </summary>
         public static string CheckIdTrip {
@@ -210,6 +219,33 @@ namespace TripsAndTravels.Prism.Resources {
         public static string FirstNamePlaceHolder {
             get {
                 return ResourceManager.GetString("FirstNamePlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forgot your password?.
+        /// </summary>
+        public static string ForgotPassword {
+            get {
+                return ResourceManager.GetString("ForgotPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to From Camera.
+        /// </summary>
+        public static string FromCamera {
+            get {
+                return ResourceManager.GetString("FromCamera", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to From Gallery.
+        /// </summary>
+        public static string FromGallery {
+            get {
+                return ResourceManager.GetString("FromGallery", resourceCulture);
             }
         }
         
@@ -412,6 +448,15 @@ namespace TripsAndTravels.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Recover your password.
+        /// </summary>
+        public static string PasswordRecover {
+            get {
+                return ResourceManager.GetString("PasswordRecover", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Phone.
         /// </summary>
         public static string Phone {
@@ -435,6 +480,15 @@ namespace TripsAndTravels.Prism.Resources {
         public static string PhonePlaceHolder {
             get {
                 return ResourceManager.GetString("PhonePlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Picture Source.
+        /// </summary>
+        public static string PictureSource {
+            get {
+                return ResourceManager.GetString("PictureSource", resourceCulture);
             }
         }
         
