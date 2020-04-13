@@ -22,6 +22,7 @@ namespace TripsAndTravels.Prism.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
             new SfBusyIndicatorRenderer();
             LoadApplication(new App(new AndroidInitializer()));
             //global::Xamarin.Forms.Forms.Init(this, bundle);

@@ -5,6 +5,7 @@ using TripsAndTravels.Common.Helpers;
 using TripsAndTravels.Common.Models;
 using TripsAndTravels.Common.Services;
 using TripsAndTravels.Prism.Helpers;
+using TripsAndTravels.Prism.Views;
 
 namespace TripsAndTravels.Prism.ViewModels
 {
@@ -121,9 +122,10 @@ namespace TripsAndTravels.Prism.ViewModels
             Password = string.Empty;
         }
 
-
-        private void RegisterAsync()
+        private async void RegisterAsync()
         {
+            await _navigationService.NavigateAsync(nameof(RegisterPage));
         }
+
     }
 }

@@ -24,6 +24,9 @@ namespace TripsAndTravels.Common.Models
 
         public string FullNameWithDocument => $"{FirstName} {LastName} - {Document}";
 
-        
+        public string PictureFullPath => string.IsNullOrEmpty(PicturePath)
+        ? "https://tripsandtravelswebjc.azurewebsites.net//images/noimage.png"
+        : $"https://tripsandtravelswebjc.azurewebsites.net{PicturePath.Substring(1)}";
+
     }
 }

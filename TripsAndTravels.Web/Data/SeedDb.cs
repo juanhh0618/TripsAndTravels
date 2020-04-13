@@ -26,10 +26,10 @@ namespace TripsAndTravels.Web.Data
         {
             await _dataContext.Database.EnsureCreatedAsync();
             await CheckRolesAsync();
-            await CheckUserAsync("1010", "Juan", "Hernandez", "juancho061899@gmail.com", "350 634 2747", UserType.Admin);
-            var employee0 = await CheckUserAsync("2020", "Juan", "Hernandez", "juan061899@gmail.com", "350 634 2747", UserType.Employee);
-            var employee1 = await CheckUserAsync("3030", "Juan", "Hernandez", "jchh061899@gmail.com", "350 634 2747", UserType.Employee);
-            var employee2 = await CheckUserAsync("4040", "Juan", "Hernandez", "juanhernandez236636@correo.itm.edu.co", "350 634 2747", UserType.Employee);
+            await CheckUserAsync("1010", "Juan", "Hernandez", "juancho061899@gmail.com", "350 634 2747", "ruta.jpg", UserType.Admin);
+            var employee0 = await CheckUserAsync("2020", "Juan", "Hernandez", "juan061899@gmail.com", "350 634 2747", "ruta.jpg", UserType.Employee);
+            var employee1 = await CheckUserAsync("3030", "Juan", "Hernandez", "jchh061899@gmail.com", "350 634 2747", "ruta.jpg", UserType.Employee);
+            var employee2 = await CheckUserAsync("4040", "Juan", "Hernandez", "juanhernandez236636@correo.itm.edu.co", "350 634 2747", "ruta.jpg", UserType.Employee);
             await CheckTripsAsync(employee0, employee1, employee2);
         }
 
@@ -39,6 +39,7 @@ namespace TripsAndTravels.Web.Data
              string lastName,
              string email,
              string phone,
+             string picturepath,
              UserType userType)
         {
             var user = await _userHelper.GetUserByEmailAsync(email);
@@ -52,6 +53,7 @@ namespace TripsAndTravels.Web.Data
                     UserName = email,
                     PhoneNumber = phone,
                     Document = document,
+                    PicturePath = picturepath,
                     UserType = userType
                 };
 

@@ -1,6 +1,7 @@
 ﻿using Prism;
 using Prism.Ioc;
 using Syncfusion.Licensing;
+using TripsAndTravels.Common.Helpers;
 using TripsAndTravels.Common.Services;
 using TripsAndTravels.Prism.ViewModels;
 using TripsAndTravels.Prism.Views;
@@ -33,6 +34,7 @@ namespace TripsAndTravels.Prism
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
+            containerRegistry.Register<IRegexHelper, RegexHelper>();
             containerRegistry.Register<IApiService, ApiService>();
             containerRegistry.RegisterForNavigation<HomePage, HomePageViewModel>();
             containerRegistry.RegisterForNavigation<TripsAndTravelsMasterDetailPage, TripsAndTravelsMasterDetailPageViewModel>();
@@ -41,6 +43,7 @@ namespace TripsAndTravels.Prism
             containerRegistry.RegisterForNavigation<ModifyUserPage, ModifyUserPageViewModel>();
             containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
 
+            containerRegistry.RegisterForNavigation<RegisterPage, RegisterPageViewModel>();
         }
     }
 }
