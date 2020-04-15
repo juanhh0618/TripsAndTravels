@@ -6,6 +6,9 @@ using TripsAndTravels.Prism.Helpers;
 using TripsAndTravels.Common.Models;
 using TripsAndTravels.Common.Helpers;
 using Newtonsoft.Json;
+using Prism.Commands;
+using TripsAndTravels.Prism.Views;
+using TripsAndTravels.Common.Services;
 
 namespace TripsAndTravels.Prism.ViewModels
 {
@@ -13,20 +16,28 @@ namespace TripsAndTravels.Prism.ViewModels
     {
         private readonly INavigationService _navigationService;
         private UserResponse _user;
+        private DelegateCommand _modifyUserCommand;
+        private readonly IApiService _apiService;
+        private static TripsAndTravelsMasterDetailPageViewModel _instance;
 
 
-        public TripsAndTravelsMasterDetailPageViewModel(INavigationService navigationService) : base(navigationService)
+        public TripsAndTravelsMasterDetailPageViewModel(INavigationService navigationService, IApiService apiService) : base(navigationService)
         {
+            _instance = this;
+            _apiService = apiService;
             _navigationService = navigationService;
             LoadUser();
             LoadMenus();
         }
+
+        public DelegateCommand ModifyUserCommand => _modifyUserCommand ?? (_modifyUserCommand = new DelegateCommand(ModifyUserAsync));
 
         public UserResponse User
         {
             get => _user;
             set => SetProperty(ref _user, value);
         }
+
 
         private void LoadUser()
         {
@@ -36,8 +47,42 @@ namespace TripsAndTravels.Prism.ViewModels
             }
         }
 
+        private async void ModifyUserAsync()
+        {
+            await _navigationService.NavigateAsync($"/TripsAndTravelsMasterDetailPage/NavigationPage/{nameof(ModifyUserPage)}");
+        }
+
 
         public ObservableCollection<MenuItemViewModel> Menus { get; set; }
+
+        public static TripsAndTravelsMasterDetailPageViewModel GetInstance()
+        {
+            return _instance;
+        }
+
+        public async void ReloadUser()
+        {
+            string url = App.Current.Resources["UrlAPI"].ToString();
+            bool connection = await _apiService.CheckConnectionAsync(url);
+            if (!connection)
+            {
+                return;
+            }
+
+            UserResponse user = JsonConvert.DeserializeObject<UserResponse>(Settings.User);
+            TokenResponse token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
+            EmailRequest emailRequest = new EmailRequest
+            {
+                CultureInfo = Languages.Culture,
+                Email = user.Email
+            };
+
+            Response response = await _apiService.GetUserByEmail(url, "api", "/Account/GetUserByEmail", "bearer", token.Token, emailRequest);
+            UserResponse userResponse = (UserResponse)response.Result;
+            Settings.User = JsonConvert.SerializeObject(userResponse);
+            LoadUser();
+        }
+
 
         private void LoadMenus()
         {

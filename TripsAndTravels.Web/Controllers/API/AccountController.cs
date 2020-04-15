@@ -76,7 +76,7 @@ namespace TripsAndTravels.Web.Controllers.API
                 Email = request.Email,
                 FirstName = request.FirstName,
                 LastName = request.LastName,
-                //PhoneNumber = request.Phone,
+                PhoneNumber = request.Phone,
                 UserName = request.Email,
                 PicturePath = picturePath,
                 UserType = request.UserTypeId == 1 ? UserType.Employee : UserType.Admin

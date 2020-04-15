@@ -247,6 +247,7 @@ namespace TripsAndTravels.Web.Controllers
                 Document = user.Document,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
+                PhoneNumber = user.PhoneNumber,
                 PicturePath = user.PicturePath
             };
 
@@ -271,6 +272,7 @@ namespace TripsAndTravels.Web.Controllers
                 user.Document = model.Document;
                 user.FirstName = model.FirstName;
                 user.LastName = model.LastName;
+                user.PhoneNumber = model.PhoneNumber;
                 user.PicturePath = path;
 
                 await _userHelper.UpdateUserAsync(user);

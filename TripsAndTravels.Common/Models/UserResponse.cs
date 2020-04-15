@@ -18,6 +18,8 @@ namespace TripsAndTravels.Common.Models
 
         public string PicturePath { get; set; }
 
+        public string PhoneNumber { get; set; }
+
         public UserType UserType { get; set; }
 
         public string FullName => $"{FirstName} {LastName}";

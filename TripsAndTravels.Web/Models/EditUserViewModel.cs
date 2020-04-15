@@ -22,6 +22,9 @@ namespace TripsAndTravels.Web.Models
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         public string LastName { get; set; }
 
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
+
         [Display(Name = "Picture")]
         public IFormFile PictureFile { get; set; }
 
