@@ -2,10 +2,96 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="TripsAndTravels.Prism.Views.NewTripPage"
-             BackgroundColor="{StaticResource ColorBackgroud}"
              Title="{Binding Title}">
 
+    <AbsoluteLayout>
+
+        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
+                 AbsoluteLayout.LayoutFlags="All" 
+                 Margin="15">
+
+            <Label></Label>
+            <Image x:Name="newtravelimg" HorizontalOptions="Center"
+                           HeightRequest="150"
+                           Source="newtravel"/>
+            <Label></Label>
+            <Label></Label>
+
+            <ScrollView>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0"
+                               Grid.Column="0"
+                               Text="Id Trip"
+                               VerticalOptions="Center"/>
+                    <Entry Grid.Row="0"
+                               Grid.Column="1"
+                               Placeholder="Introduzca el Id del viaje"
+                               Text="{Binding IdTrip}"/>
+                    <Label Grid.Row="1"
+                               Grid.Column="0"
+                               Text="Ciudad Destino"
+                               VerticalOptions="Center"/>
+                    <Entry Grid.Row="1"
+                               Grid.Column="1"
+                               Placeholder="Introduzca su destino"
+                               Text="{Binding DestinyCity}"/>
+
+                    <Label Grid.Row="2"
+                               Grid.Column="0"
+                               Text="Fecha de Partida"
+                               VerticalOptions="Center"/>
+                    <DatePicker  Grid.Row="2"
+                             Grid.Column="1"
+                             Date="{Binding StartDateTrip}"/>
+
+                    <Label Grid.Row="3"
+                               Grid.Column="0"
+                               Text="Fecha de Llegada"
+                               VerticalOptions="Center"/>
+                    <DatePicker  Grid.Row="3"
+                             Grid.Column="1"
+                             Date="{Binding EndDateTrip}"
+                             />
+                </Grid>
+            </ScrollView>
+
+            <Label></Label>
+
+            <StackLayout>
+                <Button Command="{Binding SaveTripCommand}" 
+                        Text="Guardar"/>
+            </StackLayout>
+
+
+        </StackLayout>
+
+        <busyindicator:SfBusyIndicator AnimationType="Gear" 
+                                       AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
+                                       AbsoluteLayout.LayoutFlags="All"
+                                       BackgroundColor="{StaticResource ColorAccent}"
+                                       HorizontalOptions="Center"
+                                       TextColor="{StaticResource ColorFontInverse}"
+                                       IsVisible="{Binding IsRunning}"
+                                       Title="Cargando..."
+                                       VerticalOptions="Center"
+                                       ViewBoxWidth="80"
+                                       ViewBoxHeight="80" />
+
+    </AbsoluteLayout>
 
 </ContentPage>
