@@ -23,6 +23,23 @@ namespace TripsAndTravels.Web.Controllers
             return View(await _context.Trips.ToListAsync());
         }
 
+        /* // GET: Trips/Details/5
+         public async Task<IActionResult> Details(int? id)
+         {
+             if (id == null)
+             {
+                 return NotFound();
+             }
+
+             TripEntity tripEntity = await _context.Trips
+                 .FirstOrDefaultAsync(m => m.Id == id);
+             if (tripEntity == null)
+             {
+                 return NotFound();
+             }
+
+             return View(tripEntity);
+         }*/
         // GET: Trips/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -31,15 +48,23 @@ namespace TripsAndTravels.Web.Controllers
                 return NotFound();
             }
 
-            TripEntity tripEntity = await _context.Trips
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (tripEntity == null)
+            /* TripEntity tripEntity = await _context.Trips
+                 .FirstOrDefaultAsync(m => m.Id == id);*/
+            var TripEntity = await _context.Trips
+            .Include(t => t.User)
+            .Include(t => t.TripDetails)           
+            .ThenInclude(t => t.Expenses)
+            .FirstOrDefaultAsync(m => m.Id == id);
+
+            if (TripEntity == null)
             {
                 return NotFound();
             }
 
-            return View(tripEntity);
+            return View(TripEntity);
         }
+
+
         [HttpGet]
         public IActionResult Create()
         {
@@ -124,3 +149,4 @@ namespace TripsAndTravels.Web.Controllers
         }
     }
 }
+

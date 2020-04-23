@@ -16,7 +16,7 @@ namespace TripsAndTravels.Web.Data.Entities
 
         public string Description { get; set; }
 
-        public string BillPath { get; set; }
+        //public string BillPath { get; set; }
 
         public TripEntity Trip { get; set; }
         

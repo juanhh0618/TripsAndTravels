@@ -37,8 +37,9 @@ namespace TripsAndTravels.Prism.ViewModels
             _apiService = apiService;
             Title = Languages.ModifyUser;
             IsEnabled = true;
+            Image = App.Current.Resources["UrlNoImage"].ToString();
             User = JsonConvert.DeserializeObject<UserResponse>(Settings.User);
-            Image = User.PictureFullPath;
+            //Image = User.PictureFullPath;
         }
         public DelegateCommand ChangePasswordCommand => _changePasswordCommand ?? (_changePasswordCommand = new DelegateCommand(ChangePasswordAsync));
 
@@ -124,7 +125,7 @@ namespace TripsAndTravels.Prism.ViewModels
             Settings.User = JsonConvert.SerializeObject(User);
             TripsAndTravelsMasterDetailPageViewModel.GetInstance().ReloadUser();
             await App.Current.MainPage.DisplayAlert(Languages.Ok, Languages.UserUpdated, Languages.Accept);
-
+            await _navigationService.GoBackAsync();
 
         }
 

@@ -101,35 +101,35 @@ namespace TripsAndTravels.Web.Data
                         Origin = "Bogota",
                         
                         Description = "Tuve que viajar por una reunión de un negocio de la empresa",
-                        BillPath = "bill.location.jpg" ,
+                        
                         Expenses = new List<ExpensesEntity>
                         {
                             new ExpensesEntity
                             {
                                 Value = 150000 ,
                                 ExpenseType = "Transport" ,
-                                
+                                BillPath = "bill.png"
                             },
 
                             new ExpensesEntity
                             {
                                 Value = 200000 ,
                                 ExpenseType = "Food" ,
-                                
+                                BillPath = "bill.png"
                             },
 
                             new ExpensesEntity
                             {
                                 Value = 300000 ,
                                 ExpenseType = "Hotel" ,
-                                
+                                BillPath = "bill.png"
                             },
 
                             new ExpensesEntity
                             {
                                 Value = 25000 ,
                                 ExpenseType = "Taxes" ,
-                                
+                                BillPath = "bill.png"
                             }
                         }
                     }
@@ -150,35 +150,35 @@ namespace TripsAndTravels.Web.Data
                         Origin = "Medellin",
                         
                         Description = "Vacaciones pagas por la empresa",
-                        BillPath = "bill.location.jpg" ,
+                        
                         Expenses = new List<ExpensesEntity>
                         {
                             new ExpensesEntity
                             {
                                 Value = 350000 ,
                                 ExpenseType = "Transport" ,
-                                
+                                BillPath = "bill.png"
                             },
 
                             new ExpensesEntity
                             {
                                 Value = 400000 ,
                                 ExpenseType = "Food" ,
-                                
+                                BillPath = "bill.png"
                             },
 
                             new ExpensesEntity
                             {
                                 Value = 500000 ,
                                 ExpenseType = "Hotel" ,
-                                
+                                BillPath = "bill.png"
                             },
 
                             new ExpensesEntity
                             {
                                 Value = 75000 ,
                                 ExpenseType = "Taxes" ,
-                                
+                                BillPath = "bill.png"
                             }
                         }
                     }
@@ -198,35 +198,35 @@ namespace TripsAndTravels.Web.Data
                         Origin = "Neiva",
                        
                         Description = "Por motivo de proximo viaje la empresa me solicito sacar la visa",
-                        BillPath = "bill.location.jpg" ,
+                        
                         Expenses = new List<ExpensesEntity>
                         {
                             new ExpensesEntity
                             {
                                 Value = 350000 ,
                                 ExpenseType = "Transport" ,
-                                
+                                BillPath = "bill.png"
                             },
 
                             new ExpensesEntity
                             {
                                 Value = 400000 ,
                                 ExpenseType = "Food" ,
-                                
+                                BillPath = "bill.png"
                             },
 
                             new ExpensesEntity
                             {
                                 Value = 500000 ,
                                 ExpenseType = "Hotel" ,
-                                
+                                BillPath = "bill.png"
                             },
 
                             new ExpensesEntity
                             {
                                 Value = 500000 ,
                                 ExpenseType = "Taxes" ,
-                                
+                                BillPath = "bill.png"
                             }
                         }
                     }
