@@ -14,9 +14,9 @@
                  Margin="15">
 
             <Label></Label>
-            <Image x:Name="newtravelimg" HorizontalOptions="Center"
+            <Image x:Name="ViajesIcono" HorizontalOptions="Center"
                            HeightRequest="150"
-                           Source="newtravel"/>
+                           Source="ViajesIcono"/>
             <Label></Label>
             <Label></Label>
 

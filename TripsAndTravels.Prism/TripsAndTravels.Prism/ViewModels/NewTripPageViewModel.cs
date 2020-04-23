@@ -26,7 +26,7 @@ namespace TripsAndTravels.Prism.ViewModels
             _navigationService = navigationService;
             _apiService = apiService;
             _trip = new TripRequest();
-            Title = "Agregar Nuevo Viaje";
+            Title = "Add New Trip";
             StartDateTrip = DateTime.Now;
             EndDateTrip = DateTime.Now;
         }
