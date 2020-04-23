@@ -54,7 +54,16 @@ namespace TripsAndTravels.Web.Controllers.API
                 StartDateTrip = tripRequest.StartDateTrip,
                 EndDateTrip = tripRequest.EndDateTrip,
                 DestinyCity = tripRequest.DestinyCity,
-                User = userEntity
+                User = userEntity,
+                TripDetails = new List<TripDetailsEntity>
+                {
+                     new TripDetailsEntity
+                    {
+                        Origin = tripRequest.Origin,
+                        Description= tripRequest.Description,
+
+                    }
+                }
             };
 
             _context.Trips.Add(tripEntity);

@@ -12,10 +12,10 @@
                      AbsoluteLayout.LayoutFlags="All" 
                      Margin="15">
             <Label></Label>
-            <Image x:Name="planeimg" HorizontalOptions="Center"
+            <Image x:Name="ViajesIcono" HorizontalOptions="Center"
                            HeightRequest="150"
-                           Source="plane"/>
-            <Label>Aquí puedes ver los viajes que has registrado. Mira los detalles y gastos tocando en el viaje deseado.</Label>
+                           Source="ViajesIcono"/>
+            <Label>Here you can check some trips that you have saved in the app.</Label>
             <Label></Label>
 
             <Grid>
@@ -80,9 +80,7 @@
                                    Text="{Binding StartDateTrip, StringFormat='{0:dd/MM/yyyy HH:mm}'}"/>
                             <Label Grid.Column="3"
                                    Text="{Binding EndDateTrip, StringFormat='{0:dd/MM/yyyy HH:mm}'}"/>
-                            <Image Grid.Column="4" 
-                                   Source="ic_arrow_forward"/>
-
+                            
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

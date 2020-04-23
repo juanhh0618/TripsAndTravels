@@ -32,6 +32,8 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
                     <Label Grid.Row="0"
@@ -67,6 +69,25 @@
                              Grid.Column="1"
                              Date="{Binding EndDateTrip}"
                              />
+
+
+                    <Label Grid.Row="4"
+                               Grid.Column="0"
+                               Text="Origin"
+                               VerticalOptions="Center"/>
+                    <Entry Grid.Row="4"
+                               Grid.Column="1"
+                               Placeholder="Introduzca la ciudad de origen"
+                               Text="{Binding Origin}"/>
+                    <Label Grid.Row="5"
+                               Grid.Column="0"
+                               Text="Description"
+                               VerticalOptions="Center"/>
+                    <Entry Grid.Row="5"
+                               Grid.Column="1"
+                               Placeholder="Breve Descripción"
+                               Text="{Binding Description}"/>
+
                 </Grid>
             </ScrollView>
 

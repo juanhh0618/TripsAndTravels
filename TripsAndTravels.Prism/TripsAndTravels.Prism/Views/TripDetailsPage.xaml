@@ -62,9 +62,7 @@
                    FontAttributes="Bold"
                    Text="{i18n:Translate Description}"/>
 
-                <Label Grid.Column="2"
-                   FontAttributes="Bold"/>
-
+                
             </Grid>
 
             <CollectionView ItemsSource="{Binding Trip.TripDetails}">
@@ -78,6 +76,7 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
+                                
                                 <ColumnDefinition Width="Auto" />
                                 
 
@@ -89,19 +88,56 @@
                             <Label Grid.Column="1"
                                Text="{Binding Description}"
                                VerticalOptions="Center"/>
-                            <Image Grid.Column="2" 
-                               Source="ic_more_vert"/>
+                          
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Total Expenses"/>
-                <Label Text="{Binding Trip.TripDetails.TotalExpenses}"/>
-            </StackLayout>
-            
-            <Label></Label>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".8*" />
+                    <ColumnDefinition Width="*" />
+                    
+
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Column="0"
+                   FontAttributes="Bold"
+                   Text="Total Expenses"/>
+
+
+            </Grid>
+
+            <CollectionView ItemsSource="{Binding Trip.TripDetails}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+
+                            <Grid.ColumnDefinitions>
+                               
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+
+
+                            </Grid.ColumnDefinitions>
+
+                            
+                            <Label Grid.Column="0"
+                               Text="{Binding TotalExpenses}"
+                               VerticalOptions="Center"/>
+
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -149,8 +185,7 @@
                             <Label Grid.Column="1"
                                Text="{Binding ExpensesType}"
                                VerticalOptions="Center"/>
-                            <Image Grid.Column="2" 
-                               Source="ic_more_vert"/>
+                            
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

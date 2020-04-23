@@ -99,7 +99,7 @@ namespace TripsAndTravels.Web.Data
                     new TripDetailsEntity
                     {
                         Origin = "Bogota",
-                        TripType = "Work" ,
+                        
                         Description = "Tuve que viajar por una reunión de un negocio de la empresa",
                         BillPath = "bill.location.jpg" ,
                         Expenses = new List<ExpensesEntity>
@@ -148,7 +148,7 @@ namespace TripsAndTravels.Web.Data
                     new TripDetailsEntity
                     {
                         Origin = "Medellin",
-                        TripType = "Vacations" ,
+                        
                         Description = "Vacaciones pagas por la empresa",
                         BillPath = "bill.location.jpg" ,
                         Expenses = new List<ExpensesEntity>
@@ -196,7 +196,7 @@ namespace TripsAndTravels.Web.Data
                     new TripDetailsEntity
                     {
                         Origin = "Neiva",
-                        TripType = "Visa" ,
+                       
                         Description = "Por motivo de proximo viaje la empresa me solicito sacar la visa",
                         BillPath = "bill.location.jpg" ,
                         Expenses = new List<ExpensesEntity>

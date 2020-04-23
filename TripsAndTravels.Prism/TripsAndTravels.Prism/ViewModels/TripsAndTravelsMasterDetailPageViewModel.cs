@@ -104,7 +104,7 @@ namespace TripsAndTravels.Prism.ViewModels
                 },
                 new Menu
                 {
-                    Icon = "",
+                    Icon = "ic_forward",
                     PageName = "TripList",
                     Title = "My Trips"
                 },
