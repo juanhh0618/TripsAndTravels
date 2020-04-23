@@ -1,5 +1,6 @@
 ﻿using Prism.Commands;
 using Prism.Navigation;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using TripsAndTravels.Common.Models;
 using TripsAndTravels.Common.Services;
@@ -11,6 +12,7 @@ namespace TripsAndTravels.Prism.ViewModels
     {
         private readonly IApiService _apiService;
         private TripResponse _trip;
+        private TripDetailsResponse _tripDetails;
         private bool _isRunning;
         private DelegateCommand _checkIdTripCommand;
 
@@ -20,6 +22,7 @@ namespace TripsAndTravels.Prism.ViewModels
         {
             _apiService = apiService;
             Title = Languages.TripDetails;
+            TripDetails = new TripDetailsResponse();
         }
 
         public bool IsRunning
@@ -35,9 +38,16 @@ namespace TripsAndTravels.Prism.ViewModels
             set => SetProperty(ref _trip, value);
         }
 
+        public TripDetailsResponse TripDetails
+        {
+            get => _tripDetails;
+            set => SetProperty(ref _tripDetails, value);
+        }
+
         public string IdTrip { get; set; }
 
         public DelegateCommand CheckIdTripCommand => _checkIdTripCommand ?? (_checkIdTripCommand = new DelegateCommand(CheckIdTripAsync));
+
 
         private async void CheckIdTripAsync()
         {
@@ -88,7 +98,21 @@ namespace TripsAndTravels.Prism.ViewModels
                 return;
             }
 
+            
+            
+
             Trip = (TripResponse)response.Result;
+            List<TripDetailsResponse> tripDetailsList = Trip.TripDetails;
+
+            if (tripDetailsList.Count > 0) 
+            {
+                TripDetails = tripDetailsList[0];
+            }
+
+            int a = 1;
+            int b = 1;
+            int c = 1;
         }
+        
     }
 }

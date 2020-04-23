@@ -14,6 +14,8 @@ namespace TripsAndTravels.Web.Data.Entities
         public float Value { get; set; }
 
         public string ExpenseType { get; set; }
+
+        //public string BillPath { get; set; }
         
         public TripDetailsEntity TripDetails { get; set; }
 

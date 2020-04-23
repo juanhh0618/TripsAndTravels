@@ -86,7 +86,9 @@ namespace TripsAndTravels.Prism.ViewModels
 
         private void LoadMenus()
         {
-            List<Menu> menus = new List<Menu>
+            if (Settings.IsLogin)
+            {
+                List<Menu> menus = new List<Menu>
             {
                 new Menu
                 {
@@ -99,6 +101,12 @@ namespace TripsAndTravels.Prism.ViewModels
                     Icon = "ic_control_point",
                     PageName = "NewTripPage",
                     Title = Languages.AddNewTrip
+                },
+                new Menu
+                {
+                    Icon = "",
+                    PageName = "TripList",
+                    Title = "My Trips"
                 },
                 new Menu
                 {
@@ -120,13 +128,66 @@ namespace TripsAndTravels.Prism.ViewModels
                 }
             };
 
-            Menus = new ObservableCollection<MenuItemViewModel>(
-                menus.Select(m => new MenuItemViewModel(_navigationService)
+                Menus = new ObservableCollection<MenuItemViewModel>(
+                    menus.Select(m => new MenuItemViewModel(_navigationService)
+                    {
+                        Icon = m.Icon,
+                        PageName = m.PageName,
+                        Title = m.Title
+                    }).ToList());
+            }
+
+            else
+            {
+
+                List<Menu> menus2 = new List<Menu>
+            {
+                new Menu
                 {
-                    Icon = m.Icon,
-                    PageName = m.PageName,
-                    Title = m.Title
-                }).ToList());
+                    Icon = "ic_home",
+                    PageName = "HomePage",
+                    Title = Languages.Home
+                },
+                new Menu
+                {
+                    Icon = "ic_control_point",
+                    PageName = "LoginPage",
+                    Title = Languages.AddNewTrip
+                },
+                new Menu
+                {
+                    Icon = "ic_details",
+                    PageName = "TripList",
+                    Title = "My Trips"
+                },
+                new Menu
+                {
+                    Icon = "ic_details",
+                    PageName = "LoginPage",
+                    Title = Languages.SeeTripDetails
+                },
+                new Menu
+                {
+                    Icon = "ic_account_circle",
+                    PageName = "LoginPage",
+                    Title = Languages.ModifyUser
+                },
+                new Menu
+                {
+                    Icon = "ic_exit_to_app",
+                    PageName = "LoginPage",
+                    Title = Settings.IsLogin ? Languages.Logout : Languages.Login
+                }
+            };
+
+                Menus = new ObservableCollection<MenuItemViewModel>(
+                    menus2.Select(m => new MenuItemViewModel(_navigationService)
+                    {
+                        Icon = m.Icon,
+                        PageName = m.PageName,
+                        Title = m.Title
+                    }).ToList());
+            }
         }
     }
 }

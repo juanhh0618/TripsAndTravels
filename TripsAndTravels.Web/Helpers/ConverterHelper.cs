@@ -15,6 +15,7 @@ namespace TripsAndTravels.Web.Helpers
             return new TripResponse
             {
                 Id = tripEntity.Id,
+                IdTrip = tripEntity.IdTrip,
                 DestinyCity = tripEntity.DestinyCity,
                 StartDateTrip = tripEntity.StartDateTrip,
                 EndDateTrip = tripEntity.EndDateTrip,

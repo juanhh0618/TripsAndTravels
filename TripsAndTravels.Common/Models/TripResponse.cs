@@ -8,6 +8,8 @@ namespace TripsAndTravels.Common.Models
     {
         public int Id { get; set; }
 
+        public string IdTrip { get; set; }
+
         public DateTime StartDateTrip { get; set; }
 
         public DateTime StartDateLocal => StartDateTrip.ToLocalTime();

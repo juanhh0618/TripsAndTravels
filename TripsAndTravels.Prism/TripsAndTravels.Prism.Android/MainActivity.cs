@@ -4,6 +4,7 @@ using Android.OS;
 using Prism;
 using Prism.Ioc;
 using Syncfusion.SfBusyIndicator.XForms.Droid;
+using Xamarin.Forms;
 
 namespace TripsAndTravels.Prism.Droid
 {
@@ -18,6 +19,8 @@ namespace TripsAndTravels.Prism.Droid
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
+
+            Forms.SetFlags("CollectionView_Experimental");
 
             base.OnCreate(bundle);
 
