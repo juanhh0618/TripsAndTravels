@@ -49,6 +49,8 @@ namespace TripsAndTravels.Prism
             containerRegistry.RegisterForNavigation<RememberPasswordPage, RememberPasswordPageViewModel>();
             containerRegistry.RegisterForNavigation<ChangePasswordPage, ChangePasswordPageViewModel>();
             containerRegistry.RegisterForNavigation<TripList, TripListViewModel>();
+            containerRegistry.RegisterForNavigation<NewExpensePage, NewExpensePageViewModel>();
+            containerRegistry.RegisterForNavigation<DetailsPage, DetailsPageViewModel>();
         }
     }
 }

@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="TripsAndTravels.Prism.Views.NewExpensePage"
+             BackgroundColor="{StaticResource ColorBackgroud}"
+             Title="{Binding Title}">
+
+    <AbsoluteLayout>
+        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
+                     AbsoluteLayout.LayoutFlags="All"
+                     Margin="15">
+            <ScrollView>
+                <StackLayout>
+                    <Label></Label>
+                    <Label Text="Datos del gasto" FontSize="Medium" FontAttributes="Bold"></Label>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Row="0"
+                               Grid.Column="0"
+                               Text="Valor Gasto"
+                               VerticalOptions="Center"/>
+                        <Entry Grid.Row="0"
+                               Grid.Column="1"
+                               Keyboard="Numeric"
+                               Placeholder="Ingresa el valor"
+                               Text="{Binding Value}"/>
+
+                        <Label Grid.Row="1"
+                               Grid.Column="0"
+                               Text="Tipo de Gasto"
+                               VerticalOptions="Center"/>
+                        <Entry Grid.Row="1"
+                               Grid.Column="1"
+                               Placeholder="Expense Type"
+                               Text="{Binding ExpenseType}"/>
+                        
+                        
+                    </Grid>
+
+                    <Label></Label>
+                    <Label Text="Foto de Recibo" FontSize="Medium" FontAttributes="Bold"></Label>
+                    <Label Text="Toca en la imagen para agregar una foto del recibo de este gasto."></Label>
+                    <ffimageloading:CachedImage Aspect="AspectFit"
+                                                Source="{Binding Image}" 
+                                                CacheDuration= "50"
+                                                HeightRequest="150"
+                                                Margin="5"
+                                                RetryCount= "3"
+                                                RetryDelay= "600">
+                        <ffimageloading:CachedImage.Transformations>
+                            <fftransformations:CircleTransformation />
+                        </ffimageloading:CachedImage.Transformations>
+                        <ffimageloading:CachedImage.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ChangeImageCommand}"/>
+                        </ffimageloading:CachedImage.GestureRecognizers>
+                    </ffimageloading:CachedImage>
+
+                </StackLayout>
+            </ScrollView>
+
+
+            <StackLayout Orientation="Horizontal"
+                         VerticalOptions="EndAndExpand">
+                <Button Command="{Binding SaveExpense}"
+                        IsEnabled="{Binding IsEnabled}"
+                        Text="Guardar gasto"/>
+            </StackLayout>
+
+        </StackLayout>
+        <busyindicator:SfBusyIndicator AnimationType="Gear" 
+                                       AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
+                                       AbsoluteLayout.LayoutFlags="All"
+                                       BackgroundColor="{StaticResource ColorAccent}"
+                                       HorizontalOptions="Center"
+                                       TextColor="{StaticResource ColorFontInverse}"
+                                       IsVisible="{Binding IsRunning}"
+                                       Title="Cargando..."
+                                       VerticalOptions="Center"
+                                       ViewBoxWidth="80"
+                                       ViewBoxHeight="80" />
+    </AbsoluteLayout>
+
+</ContentPage>

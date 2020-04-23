@@ -9,7 +9,7 @@ namespace TripsAndTravels.Common.Models
         public int Id { get; set; }
         public float Value { get; set; }
         public string ExpensesType { get; set; }
-        //public string BillPath { get; set; }
-        //public byte[] PictureArray { get; set; }
+        public string BillPath { get; set; }
+        public byte[] PictureArray { get; set; }
     }
 }

@@ -9,18 +9,18 @@ using TripsAndTravels.Prism.Views;
 
 namespace TripsAndTravels.Prism.ViewModels
 {
-    public class TripDetailsPageViewModel : ViewModelBase
+    public class DetailsPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
         private readonly IApiService _apiService;
         private TripResponse _trip;
         private TripDetailsResponse _tripDetails;
-
+        private List<ExpensesResponse> _expenses;
         private bool _isRunning;
         private DelegateCommand _checkIdTripCommand;
         private DelegateCommand _newExpenseCommand;
-        private List<ExpensesResponse> _expenses;
-        public TripDetailsPageViewModel(
+
+        public DetailsPageViewModel(
             INavigationService navigationService,
             IApiService apiService) : base(navigationService)
         {
@@ -28,6 +28,7 @@ namespace TripsAndTravels.Prism.ViewModels
             _apiService = apiService;
             Title = Languages.TripDetails;
             TripDetails = new TripDetailsResponse();
+            Expenses = new List<ExpensesResponse>();
         }
 
         public bool IsRunning
@@ -61,24 +62,25 @@ namespace TripsAndTravels.Prism.ViewModels
 
         public DelegateCommand CheckIdTripCommand => _checkIdTripCommand ?? (_checkIdTripCommand = new DelegateCommand(CheckIdTripAsync));
         public DelegateCommand NewExpenseCommand => _newExpenseCommand ?? (_newExpenseCommand = new DelegateCommand(GoToNewExpensePage));
-        
-        
 
-       /* public override void OnNavigatedTo(INavigationParameters parameters)
+
+
+        public override void OnNavigatedTo(INavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
             Trip = parameters.GetValue<TripResponse>("trip");
-        }*/
 
-        
+            Expenses = Trip.TripDetails[0].Expenses;
+        }
+
         public async void GoToNewExpensePage()
         {
             NavigationParameters parameters = new NavigationParameters
-             {
-                 { "trip", Trip }
-             };
-             
-            await _navigationService.NavigateAsync(nameof(NewExpensePage),parameters);
+            {
+                { "trip", Trip }
+            };
+
+            await _navigationService.NavigateAsync(nameof(NewExpensePage), parameters);
         }
         private async void CheckIdTripAsync()
         {
@@ -125,26 +127,26 @@ namespace TripsAndTravels.Prism.ViewModels
                 await App.Current.MainPage.DisplayAlert(
                     Languages.Error,
                     "The trip doesn't exist",
-                    Languages.Accept );
+                    Languages.Accept);
                 return;
             }
 
-            
-            
+
+
 
             Trip = (TripResponse)response.Result;
             List<TripDetailsResponse> tripDetailsList = Trip.TripDetails;
 
-            if (tripDetailsList.Count > 0) 
+            if (tripDetailsList.Count > 0)
             {
                 TripDetails = tripDetailsList[0];
             }
-            TripDetailsId = tripDetailsList[0].Id;
-            
+
+
             /*int a = 1;
             int b = 1;
             int c = 1;*/
         }
-        
+
     }
 }

@@ -5,7 +5,7 @@
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              xmlns:i18n="clr-namespace:TripsAndTravels.Prism.Helpers"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="TripsAndTravels.Prism.Views.TripDetailsPage"
+             x:Class="TripsAndTravels.Prism.Views.DetailsPage"
              BackgroundColor="{StaticResource ColorBackgroud}"
              Title="{Binding Title}">
 
@@ -42,7 +42,7 @@
                 <Label Text="{i18n:Translate Employee}"/>
                 <Label Text="{Binding Trip.User.FullName, StringFormat='{0:N0}'}"/>
             </StackLayout>
-            
+
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -74,12 +74,12 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
-                           
+
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
-                                
+
 
                             </Grid.ColumnDefinitions>
 
@@ -100,7 +100,7 @@
                 <Label Text="Total Expenses"/>
                 <Label Text="{Binding Trip.TripDetails.TotalExpenses}"/>
             </StackLayout>
-            
+
             <Label></Label>
 
             <Grid>
@@ -176,6 +176,6 @@
                 	                ViewBoxHeight="80" />
 
     </AbsoluteLayout>
-        
-             
+
+
 </ContentPage>

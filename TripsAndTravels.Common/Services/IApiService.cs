@@ -15,6 +15,7 @@ namespace TripsAndTravels.Common.Services
         Task<Response> ChangePasswordAsync(string urlBase, string servicePrefix, string controller, ChangePasswordRequest changePasswordRequest, string tokenType, string accessToken);
         Task<Response> AddNewTripAsync(string urlBase, string servicePrefix, string controller, string tokenType, string accessToken, TripRequest tripRequest);
         Task<Response> GetMyTrips(string urlBase, string servicePrefix, string controller, string tokenType, string accessToken, MyTripsRequest model);
+        Task<Response> AddNewExpense<T>(string urlBase, string servicePrefix, string controller, string tokenType, string accessToken, T model);
 
     }
 

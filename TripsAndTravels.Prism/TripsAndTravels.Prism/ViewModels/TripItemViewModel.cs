@@ -10,7 +10,7 @@ namespace TripsAndTravels.Prism.ViewModels
         private readonly INavigationService _navigationService;
         private DelegateCommand _selectTripCommand;
         private DelegateCommand _selectTrip2Command;
-
+        private DelegateCommand _selectIdTripCommand;
 
         public TripItemViewModel(INavigationService navigationService)
         {
@@ -21,7 +21,17 @@ namespace TripsAndTravels.Prism.ViewModels
 
         public DelegateCommand SelectTrip2Command => _selectTrip2Command ?? (_selectTrip2Command = new DelegateCommand(SelectTrip2Async));
 
+        public DelegateCommand SelectIdTripCommand => _selectIdTripCommand ?? (_selectIdTripCommand = new DelegateCommand(NavigateToNewExpense));
 
+        private async void NavigateToNewExpense()
+        {
+            NavigationParameters parameters = new NavigationParameters
+            {
+                { "trip", this }
+            };
+
+            await _navigationService.NavigateAsync(nameof(NewExpensePage), parameters);
+        }
         private async void SelectTripAsync()
         {
             NavigationParameters parameters = new NavigationParameters
